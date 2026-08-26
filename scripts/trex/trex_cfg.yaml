@@ -1,0 +1,10 @@
+- version: 2
+  # Dual-port 82599ES/X520 in the CPU-direct x8 slot (PCI bus 01). BOTH ports
+  # must be bound to DPDK or TRex hits the ixgbe multispeed-fiber watchdog.
+  interfaces: ["01:00.0", "01:00.1"]
+  port_limit: 2
+  port_info:
+    # TRex port 0 = 01:00.0 (enp1s0f0) -> unconnected dummy port
+    - dest_mac: "f8:f2:1e:2b:65:bd"
+    # TRex port 1 = 01:00.1 (enp1s0f1) -> DuT enp35s0f1 (cabled; send with -p 1)
+    - dest_mac: "f8:f2:1e:2b:65:bd"

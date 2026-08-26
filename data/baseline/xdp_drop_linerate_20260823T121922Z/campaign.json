@@ -1,0 +1,18 @@
+{
+  "created_utc": "2026-08-23T12:19:23.832765+00:00",
+  "purpose": "decide whether the unconditional native XDP drop is CPU limited or link limited at the 10 GbE line rate",
+  "paper_step": "Measurement Procedure, first measurement",
+  "path": "xdp_drop",
+  "touch": "no-touch",
+  "rates_pps": [
+    14880952
+  ],
+  "line_rate_pps": 14880952,
+  "repetitions_per_rate": 5,
+  "duration_s": 30,
+  "warmup_s": 5,
+  "iface": "enp35s0f1",
+  "cpu": 10,
+  "host": "dut@192.168.137.50",
+  "trex_port": 1
+}

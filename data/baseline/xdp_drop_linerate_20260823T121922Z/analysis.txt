@@ -1,0 +1,11 @@
+UNCONDITIONAL XDP DROP AT THE LINE RATE
+
+offered 14880952 pps, line rate 14880952 pps, 5 of 5 repetitions valid
+
+generator sampled rate         14.7995 Mpps   (99.45 per cent of line, 0 transmit errors)
+DuT accepted                   13.8724 Mpps   (min 13.8395, max 13.8952, range 0.402 per cent)
+xdp-bench reported             13.8743 Mpps   (the program's own view of the drop rate)
+RX-side loss                     6.329 per cent
+active cycle fraction           100.00 per cent
+cycles per packet                230.2        (min 229.8, max 230.7, range 0.404 per cent)
+instructions per packet          266.5

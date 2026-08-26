@@ -1,0 +1,30 @@
+/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/utils/common.py:352: SyntaxWarning: invalid escape sequence '\d'
+  return [int(c) if c.isdigit() else c for c in re.split('(\d+)', val)]
+/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/utils/parsing_opts.py:35: SyntaxWarning: invalid escape sequence '\d'
+  match = re.match("^(\d+(\.\d+)?)([m|h]?)$", val)
+/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/utils/parsing_opts.py:88: SyntaxWarning: invalid escape sequence '\d'
+  pattern = "^(\d+(\.\d+)?)(((k|m|g)?(bpsl1|pps|bps))|%)?"
+/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/utils/parsing_opts.py:96: SyntaxWarning: invalid escape sequence '\+'
+  pattern += "([\+\-])?$"
+/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/utils/parsing_opts.py:383: SyntaxWarning: invalid escape sequence '\S'
+  m = re.search('(\S+)=(.+)', token)
+/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/common/trex_subscriber.py:113: SyntaxWarning: invalid escape sequence '\-'
+  m = re.search('(.*)\-([0-8])', key)
+/opt/trex/v3.08/external_libs/scapy-2.4.3/scapy/layers/ipsec.py:469: CryptographyDeprecationWarning: Blowfish has been deprecated
+  cipher=algorithms.Blowfish,
+/opt/trex/v3.08/external_libs/scapy-2.4.3/scapy/layers/ipsec.py:483: CryptographyDeprecationWarning: CAST5 has been deprecated
+  cipher=algorithms.CAST5,
+Traceback (most recent call last):
+  File "/home/luw/XDP3/trex/smoke_stream.py", line 72, in <module>
+    main()
+  File "/home/luw/XDP3/trex/smoke_stream.py", line 53, in main
+    c.start(ports=[args.port], mult="1", duration=args.duration)
+  File "/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/common/trex_api_annotators.py", line 51, in wrap2
+    ret = f(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^
+  File "/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/stl/trex_stl_client.py", line 48, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/trex/v3.08/automation/trex_control_plane/interactive/trex/stl/trex_stl_client.py", line 850, in start
+    raise TRexError(rc)
+trex.common.trex_exceptions.TRexError: Port 1 : *** Expected L1 B/W: '10.336 Gbps' exceeds port line rate: '10 Gbps'

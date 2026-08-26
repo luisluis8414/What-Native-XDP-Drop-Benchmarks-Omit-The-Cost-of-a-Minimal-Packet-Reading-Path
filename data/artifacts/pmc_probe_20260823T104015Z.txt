@@ -1,0 +1,311 @@
+
+================================================================
+STEP 0  processor and measurement environment
+
+================================================================
+  cpu family: 23
+  microcode: 0x8001137
+  model: 1
+  model name: AMD Ryzen 5 1600 Six-Core Processor
+  stepping: 1
+  vendor_id: AuthenticAMD
+  cache sizes:
+    L1 Data        32K  shared with 10
+    L1 Instruction      64K  shared with 10
+    L2 Unified     512K  shared with 10
+    L3 Unified    8192K  shared with 6,8,10
+  perf version           : perf version 7.0.0
+  perf_event_paranoid    : 4
+  nmi_watchdog           : 0
+  smt control            : off
+  governor cpu10         : performance
+  boost                  : 0
+
+================================================================
+STEP 1  does perf know the symbolic vendor events?
+
+================================================================
+  (no symbolic match; the raw encodings below are then the only route)
+
+  full unit-mask list as perf reports it:
+
+================================================================
+STEP 3  microbenchmarks, all five masks in one group
+
+================================================================
+  Working sets against this core: L2 512 KiB, L3 8 MiB per CCX.
+  Each case is run twice. iterations=0 is chain setup only, so the
+  difference between the two is the chase and nothing else.
+
+  CASE DRAM  256 MiB, far beyond the 8 MiB L3
+
+  --- chase
+      events: r0143,r0243,r0843,r1043,r4043,cycles
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x765e1d400000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x7b37fa600000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x700259a00000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x772e8c200000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x7f0dc5a00000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+                 527,476      r0143                                                                   ( +-  7.58% )
+               2,221,021      r0243                                                                   ( +-  0.23% )
+              18,802,782      r0843                                                                   ( +-  0.65% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+           5,825,294,291      cycles                                                                  ( +-  0.35% )
+      
+             1.825320533 +- 0.006401545 seconds time elapsed  ( +-  0.35% )
+      
+
+  --- setup only
+      events: r0143,r0243,r0843,r1043,r4043,cycles
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 0, sink 0x7fc635400000
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 0, sink 0x7e4ab7800000
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 0, sink 0x78155a600000
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 0, sink 0x7aaede600000
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 0, sink 0x787ee1e00000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+                 532,321      r0143                                                                   ( +-  2.21% )
+               2,048,910      r0243                                                                   ( +-  0.19% )
+               6,515,678      r0843                                                                   ( +-  1.87% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+           1,065,715,650      cycles                                                                  ( +-  0.40% )
+      
+             0.335026516 +- 0.001329587 seconds time elapsed  ( +-  0.40% )
+      
+
+  CASE DRAM WITH HUGE PAGES  same 256 MiB, page walks largely removed
+  A DRAM fill count that survives this is a fill. One that collapses was
+  page-walk traffic counted as a demand fill.
+
+  --- chase, THP
+      events: r0143,r0243,r0843,r1043,r4043,cycles
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 1, sink 0x72779e600000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 1, sink 0x77da03c00000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 1, sink 0x7089f7e00000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 1, sink 0x77a240c00000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 1, sink 0x73dbf8200000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+                 570,220      r0143                                                                   ( +-  1.39% )
+               2,250,824      r0243                                                                   ( +-  0.06% )
+              19,408,875      r0843                                                                   ( +-  0.01% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+           4,523,857,673      cycles                                                                  ( +-  0.55% )
+      
+             1.417859838 +- 0.007720435 seconds time elapsed  ( +-  0.54% )
+      
+
+  --- setup only, THP
+      events: r0143,r0243,r0843,r1043,r4043,cycles
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 1, sink 0x7c4c6ba00000
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 1, sink 0x7bc058800000
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 1, sink 0x73aa5e800000
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 1, sink 0x78b339600000
+          chase 268435456 B, 4194304 lines, 0 steps, hugepages 1, sink 0x770dcb800000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+                 569,328      r0143                                                                   ( +-  0.55% )
+               2,058,000      r0243                                                                   ( +-  0.04% )
+               7,027,939      r0843                                                                   ( +-  0.14% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+             509,492,935      cycles                                                                  ( +-  0.05% )
+      
+             0.160864583 +- 0.000081743 seconds time elapsed  ( +-  0.05% )
+      
+
+  CASE CCX CACHE  4 MiB, beyond the 512 KiB L2, inside the 8 MiB L3
+
+  --- chase
+      events: r0143,r0243,r0843,r1043,r4043,cycles
+          chase 4194304 B, 65536 lines, 98304000 steps, hugepages 0, sink 0x73678e800000
+          chase 4194304 B, 65536 lines, 98304000 steps, hugepages 0, sink 0x77a2ecc00000
+          chase 4194304 B, 65536 lines, 98304000 steps, hugepages 0, sink 0x734f91600000
+          chase 4194304 B, 65536 lines, 98304000 steps, hugepages 0, sink 0x79701ec00000
+          chase 4194304 B, 65536 lines, 98304000 steps, hugepages 0, sink 0x70aab1600000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+               5,997,825      r0143                                                                   ( +-  0.20% )
+              92,445,397      r0243                                                                   ( +-  0.01% )
+                   7,069      r0843                                                                   ( +- 35.95% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+           4,561,526,482      cycles                                                                  ( +-  0.00% )
+      
+             1.429550681 +- 0.000105179 seconds time elapsed  ( +-  0.01% )
+      
+
+  --- setup only
+      events: r0143,r0243,r0843,r1043,r4043,cycles
+          chase 4194304 B, 65536 lines, 0 steps, hugepages 0, sink 0x74da5b600000
+          chase 4194304 B, 65536 lines, 0 steps, hugepages 0, sink 0x7f9b5da00000
+          chase 4194304 B, 65536 lines, 0 steps, hugepages 0, sink 0x7521d6a00000
+          chase 4194304 B, 65536 lines, 0 steps, hugepages 0, sink 0x722e18200000
+          chase 4194304 B, 65536 lines, 0 steps, hugepages 0, sink 0x756fd7000000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+                  64,834      r0143                                                                   ( +-  1.89% )
+                  75,328      r0243                                                                   ( +-  2.74% )
+                   3,942      r0843                                                                   ( +- 11.27% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+              16,225,296      cycles                                                                  ( +-  0.32% )
+      
+             0.006349441 +- 0.000040939 seconds time elapsed  ( +-  0.64% )
+      
+
+  CASE LOCAL L2  256 KiB, inside the 512 KiB L2
+
+  --- chase
+      events: r0143,r0243,r0843,r1043,r4043,cycles
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x74dffc000000
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x7fc04d000000
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x7cadd5400000
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x7771b0800000
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x758c5fa00000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+             204,769,408      r0143                                                                   ( +-  0.01% )
+                  50,502      r0243                                                                   ( +- 48.20% )
+                     690      r0843                                                                   ( +- 21.10% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+           3,495,843,548      cycles                                                                  ( +-  0.02% )
+      
+             1.095897248 +- 0.000185991 seconds time elapsed  ( +-  0.02% )
+      
+
+  --- setup only
+      events: r0143,r0243,r0843,r1043,r4043,cycles
+          chase 262144 B, 4096 lines, 0 steps, hugepages 0, sink 0x761e83600000
+          chase 262144 B, 4096 lines, 0 steps, hugepages 0, sink 0x703674e00000
+          chase 262144 B, 4096 lines, 0 steps, hugepages 0, sink 0x7400d1a00000
+          chase 262144 B, 4096 lines, 0 steps, hugepages 0, sink 0x78a601e00000
+          chase 262144 B, 4096 lines, 0 steps, hugepages 0, sink 0x721968a00000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+                   9,492      r0143                                                                   ( +-  0.47% )
+                  10,357      r0243                                                                   ( +-  0.59% )
+                     374      r0843                                                                   ( +- 10.04% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+               3,426,213      cycles                                                                  ( +-  0.42% )
+      
+             0.002326216 +- 0.000039805 seconds time elapsed  ( +-  1.71% )
+      
+
+================================================================
+STEP 4  additivity, five masks against the 0x5b union
+
+================================================================
+  Six events in one group, so the comparison is within a single run and
+  not across two. Any shortfall is either a source outside the five
+  defined bits or a counter that did not run the whole time.
+
+  --- DRAM, five plus union
+      events: r0143,r0243,r0843,r1043,r4043,r5b43
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x723c8fa00000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x70c584800000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x733df1c00000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x71a637c00000
+          chase 268435456 B, 4194304 lines, 12582912 steps, hugepages 0, sink 0x7781a0600000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+                 594,315      r0143                                                                   ( +-  5.00% )
+               2,227,880      r0243                                                                   ( +-  0.13% )
+              18,820,315      r0843                                                                   ( +-  0.43% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+              21,642,506      r5b43                                                                   ( +-  0.52% )
+      
+             1.832772514 +- 0.000925859 seconds time elapsed  ( +-  0.05% )
+      
+
+  --- L2, five plus union
+      events: r0143,r0243,r0843,r1043,r4043,r5b43
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x7faa20600000
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x714468a00000
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x79b408200000
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x77a8e9a00000
+          chase 262144 B, 4096 lines, 204800000 steps, hugepages 0, sink 0x7cd898c00000
+      
+       Performance counter stats for 'CPU(s) 10' (5 runs):
+      
+             204,741,735      r0143                                                                   ( +-  0.01% )
+                  78,122      r0243                                                                   ( +- 39.11% )
+                     460      r0843                                                                   ( +- 39.06% )
+                       0      r1043                                                                 
+                       0      r4043                                                                 
+             204,820,319      r5b43                                                                   ( +-  0.00% )
+      
+             1.095994470 +- 0.000169991 seconds time elapsed  ( +-  0.02% )
+      
+
+================================================================
+STEP 5  multiplexing check for the intended measurement
+
+================================================================
+  Field 5 of the CSV is the fraction of the window the event was
+  scheduled. Anything below 100.00 means the number is extrapolated.
+
+  --- 3 events: cycles, instructions, LCL_DRAM
+       4194304 steps                   chase 268435456 B  run  sink 0x716247a00000%
+      cycles                               2671332994  run 100.00%
+      instructions                          643667467  run 100.00%
+      r0843                                  10746300  run 100.00%
+
+  --- 5 events: plus LCL_L2 and LCL_CACHE
+       4194304 steps                   chase 268435456 B  run  sink 0x7e57fd600000%
+      cycles                               2659183908  run 100.00%
+      instructions                          642860862  run 100.00%
+      r0843                                  10455847  run 100.00%
+      r0143                                    492474  run 100.00%
+      r0243                                   2106514  run 100.00%
+
+  --- 6 events: plus stalled-cycles-backend
+       4194304 steps                   chase 268435456 B  run  sink 0x7363d4c00000%
+      cycles                               2671270309  run 100.00%
+      instructions                          642928077  run 100.00%
+      r0843                                  10746249  run 100.00%
+      r0143                                    583652  run 100.00%
+      r0243                                   2118546  run 100.00%
+      stalled-cycles-backend               2204305457  run 100.00%
+
+  --- 7 events: the run_cell.sh set plus three masks
+       4194304 steps                   chase 268435456 B  run  sink 0x75b9cea00000%
+      cycles                               2662493432  run 85.00%
+      instructions                          644186994  run 85.00%
+      cache-misses                           18682304  run 85.00%
+      branch-misses                          11380379  run 85.00%
+      r0843                                  10466314  run 85.00%
+      r0143                                    604227  run 85.00%
+      r0243                                   2159324  run 85.00%
+
+================================================================
+STEP 6  does the symbolic name carry the raw encoding?
+
+================================================================
+  Symbolic and raw in the same group. Equal counts confirm the mapping
+  that perf ships; unequal counts mean the JSON and the PPR disagree.
+  (perf does not know ls_refills_from_sys.ls_mabresp_lcl_dram, nothing to cross-check)
+  (perf does not know ls_refills_from_sys.ls_mabresp_lcl_l2, nothing to cross-check)
+  (perf does not know ls_refills_from_sys.ls_mabresp_lcl_cache, nothing to cross-check)
+
+================================================================
+probe complete
+
+================================================================

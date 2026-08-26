@@ -1,0 +1,159 @@
+capture_utc: 2026-08-21T13:58:10Z
+variant: no-touch
+command: /usr/sbin/xdp-bench drop enp35s0f1 -m native -p no-touch -i 1
+program_name: xdp_basic_prog
+ebpf_instruction_slots: 38
+xlated_bytes: 304
+x86_64_instruction_count: 48
+jited_bytes: 180
+jited_binary_sha256: eeac0a81c81889b5a93d448436733dc316e1a7adb6f13ff212ad763b01779c05
+
+PROGRAM INFO
+5586: ext  name xdp_basic_prog  tag c72abbf506afabf3  gpl
+	loaded_at 2026-08-21T13:58:08+0000  uid 0
+	xlated 304B  jited 180B  memlock 4096B  map_ids 3292,3300,3298
+	btf_id 3045
+
+eBPF XLATED DISASSEMBLY
+int xdp_basic_prog(struct xdp_md * ctx):
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:123 line_col:24]
+   0: (79) r1 = *(u64 *)(r1 +32)
+       79 11 20 00 00 00 00 00
+   1: (61) r1 = *(u32 *)(r1 +8)
+       61 11 08 00 00 00 00 00
+   2: (63) *(u32 *)(r10 -4) = r1
+       63 1a fc ff 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:92 line_col:14]
+   3: (b7) r0 = -1342078924
+       b7 00 00 00 34 80 01 b0
+   4: (bf) r0 = &(void __percpu *)(r0)
+       bf 00 ff ff 00 00 00 00
+   5: (61) r0 = *(u32 *)(r0 +0)
+       61 00 00 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:92 line_col:8]
+   6: (63) *(u32 *)(r10 -8) = r0
+       63 0a f8 ff 00 00 00 00
+   7: (bf) r2 = r10
+       bf a2 00 00 00 00 00 00
+   8: (07) r2 += -8
+       07 02 00 00 f8 ff ff ff
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:95 line_col:8]
+   9: (18) r1 = map[id:3292]
+       18 11 00 00 dc 0c 00 00 00 00 00 00 00 00 00 00
+  11: (07) r1 += 304
+       07 01 00 00 30 01 00 00
+  12: (61) r0 = *(u32 *)(r2 +0)
+       61 20 00 00 00 00 00 00
+  13: (35) if r0 >= 0xc goto pc+3
+       35 00 03 00 0c 00 00 00
+  14: (67) r0 <<= 6
+       67 00 00 00 06 00 00 00
+  15: (0f) r0 += r1
+       0f 10 00 00 00 00 00 00
+  16: (05) goto pc+1
+       05 00 01 00 00 00 00 00
+  17: (b7) r0 = 0
+       b7 00 00 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:96 line_col:6]
+  18: (15) if r0 == 0x0 goto pc+17
+       15 00 11 00 00 00 00 00
+;  [file:./xdp-bench/../lib/../headers/xdp/xdp_sample.bpf.h line_num:84 line_col:35]
+  19: (79) r1 = *(u64 *)(r0 +0)
+       79 01 00 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:99 line_col:2]
+  20: (07) r1 += 1
+       07 01 00 00 01 00 00 00
+;  [file:./xdp-bench/../lib/../headers/xdp/xdp_sample.bpf.h line_num:98 line_col:40]
+  21: (7b) *(u64 *)(r0 +0) = r1
+       7b 10 00 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:100 line_col:6]
+  22: (18) r1 = map[id:3300][0]+264
+       18 21 00 00 e4 0c 00 00 00 00 00 00 08 01 00 00
+  24: (61) r1 = *(u32 *)(r1 +0)
+       61 11 00 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:100 line_col:25]
+  25: (56) if w1 != 0x1 goto pc+3
+       56 01 03 00 01 00 00 00
+;  [file:./xdp-bench/../lib/../headers/xdp/xdp_sample.bpf.h line_num:84 line_col:35]
+  26: (79) r1 = *(u64 *)(r0 +8)
+       79 01 08 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:101 line_col:3]
+  27: (07) r1 += 1
+       07 01 00 00 01 00 00 00
+;  [file:./xdp-bench/../lib/../headers/xdp/xdp_sample.bpf.h line_num:98 line_col:40]
+  28: (7b) *(u64 *)(r0 +8) = r1
+       7b 10 08 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:103 line_col:6]
+  29: (18) r1 = map[id:3300][0]+260
+       18 21 00 00 e4 0c 00 00 00 00 00 00 04 01 00 00
+  31: (71) r1 = *(u8 *)(r1 +0)
+       71 11 00 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:126 line_col:9]
+  32: (18) r1 = map[id:3300][0]+264
+       18 21 00 00 e4 0c 00 00 00 00 00 00 08 01 00 00
+  34: (61) r0 = *(u32 *)(r1 +0)
+       61 10 00 00 00 00 00 00
+  35: (05) goto pc+1
+       05 00 01 00 00 00 00 00
+  36: (b4) w0 = 0
+       b4 00 00 00 00 00 00 00
+;  [file:./xdp-bench/xdp_basic.bpf.c line_num:127 line_col:1]
+  37: (95) exit
+       95 00 00 00 00 00 00 00
+
+x86-64 JIT DISASSEMBLY
+
+/tmp/no-touch.jit.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 <.data>:
+   0:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+   5:	0f 1f 00             	nopl   (%rax)
+   8:	55                   	push   %rbp
+   9:	48 89 e5             	mov    %rsp,%rbp
+   c:	48 81 ec 08 00 00 00 	sub    $0x8,%rsp
+  13:	48 8b 7f 20          	mov    0x20(%rdi),%rdi
+  17:	8b 7f 08             	mov    0x8(%rdi),%edi
+  1a:	89 7d fc             	mov    %edi,-0x4(%rbp)
+  1d:	48 c7 c0 34 80 01 b0 	mov    $0xffffffffb0018034,%rax
+  24:	65 48 03 04 25 28 80 	add    %gs:0xffffffffb0018028,%rax
+  2b:	01 b0 
+  2d:	8b 40 00             	mov    0x0(%rax),%eax
+  30:	89 45 f8             	mov    %eax,-0x8(%rbp)
+  33:	48 89 ee             	mov    %rbp,%rsi
+  36:	48 83 c6 f8          	add    $0xfffffffffffffff8,%rsi
+  3a:	48 bf d0 fe 2a c3 50 	movabs $0xffffd050c32afed0,%rdi
+  41:	d0 ff ff 
+  44:	48 81 c7 30 01 00 00 	add    $0x130,%rdi
+  4b:	8b 46 00             	mov    0x0(%rsi),%eax
+  4e:	48 83 f8 0c          	cmp    $0xc,%rax
+  52:	73 09                	jae    0x5d
+  54:	48 c1 e0 06          	shl    $0x6,%rax
+  58:	48 01 f8             	add    %rdi,%rax
+  5b:	eb 02                	jmp    0x5f
+  5d:	31 c0                	xor    %eax,%eax
+  5f:	48 85 c0             	test   %rax,%rax
+  62:	74 48                	je     0xac
+  64:	48 8b 78 00          	mov    0x0(%rax),%rdi
+  68:	48 83 c7 01          	add    $0x1,%rdi
+  6c:	48 89 78 00          	mov    %rdi,0x0(%rax)
+  70:	48 bf 08 01 59 c3 50 	movabs $0xffffd050c3590108,%rdi
+  77:	d0 ff ff 
+  7a:	8b 7f 00             	mov    0x0(%rdi),%edi
+  7d:	83 ff 01             	cmp    $0x1,%edi
+  80:	75 0c                	jne    0x8e
+  82:	48 8b 78 08          	mov    0x8(%rax),%rdi
+  86:	48 83 c7 01          	add    $0x1,%rdi
+  8a:	48 89 78 08          	mov    %rdi,0x8(%rax)
+  8e:	48 bf 04 01 59 c3 50 	movabs $0xffffd050c3590104,%rdi
+  95:	d0 ff ff 
+  98:	48 0f b6 7f 00       	movzbq 0x0(%rdi),%rdi
+  9d:	48 bf 08 01 59 c3 50 	movabs $0xffffd050c3590108,%rdi
+  a4:	d0 ff ff 
+  a7:	8b 47 00             	mov    0x0(%rdi),%eax
+  aa:	eb 02                	jmp    0xae
+  ac:	31 c0                	xor    %eax,%eax
+  ae:	c9                   	leave
+  af:	e9 d0 07 12 ee       	jmp    0xffffffffee120884
