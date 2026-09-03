@@ -1,0 +1,196 @@
+# before
+set.combined_queues	1
+set.pause	off/off
+set.coalesce_rx_usecs	1
+set.ring_rx	4096
+set.governor	performance
+set.max_khz	3200000
+set.boost	0
+set.smt	off
+set.link	up
+set.bpf_stats	0
+set.nmi_watchdog	0
+set.offload.rx_checksumming	off
+set.offload.tx_checksumming	on
+set.offload.tx_checksum_ipv4	off [fixed]
+set.offload.tx_checksum_ip_generic	off
+set.offload.tx_checksum_ipv6	off [fixed]
+set.offload.tx_checksum_fcoe_crc	on [fixed]
+set.offload.tx_checksum_sctp	off
+set.offload.scatter_gather	off
+set.offload.tx_scatter_gather	off
+set.offload.tx_scatter_gather_fraglist	off [fixed]
+set.offload.tcp_segmentation_offload	off
+set.offload.tx_tcp_segmentation	off
+set.offload.tx_tcp_ecn_segmentation	off [fixed]
+set.offload.tx_tcp_mangleid_segmentation	off
+set.offload.tx_tcp6_segmentation	off
+set.offload.tx_tcp_accecn_segmentation	off [fixed]
+set.offload.generic_segmentation_offload	off
+set.offload.generic_receive_offload	off
+set.offload.large_receive_offload	off
+set.offload.rx_vlan_offload	off
+set.offload.tx_vlan_offload	off
+set.offload.ntuple_filters	off
+set.offload.receive_hashing	on
+set.offload.highdma	on [fixed]
+set.offload.rx_vlan_filter	on
+set.offload.vlan_challenged	off [fixed]
+set.offload.tx_gso_robust	off [fixed]
+set.offload.tx_fcoe_segmentation	on [fixed]
+set.offload.tx_gre_segmentation	on
+set.offload.tx_gre_csum_segmentation	on
+set.offload.tx_ipxip4_segmentation	on
+set.offload.tx_ipxip6_segmentation	on
+set.offload.tx_udp_tnl_segmentation	on
+set.offload.tx_udp_tnl_csum_segmentation	on
+set.offload.tx_gso_partial	on
+set.offload.tx_tunnel_remcsum_segmentation	off [fixed]
+set.offload.tx_sctp_segmentation	off [fixed]
+set.offload.tx_esp_segmentation	on
+set.offload.tx_udp_segmentation	off [requested on]
+set.offload.tx_gso_list	off [fixed]
+set.offload.tx_nocache_copy	off
+set.offload.loopback	off [fixed]
+set.offload.rx_fcs	off [fixed]
+set.offload.rx_all	off
+set.offload.tx_vlan_stag_hw_insert	off [fixed]
+set.offload.rx_vlan_stag_hw_parse	off [fixed]
+set.offload.rx_vlan_stag_filter	off [fixed]
+set.offload.l2_fwd_offload	off
+set.offload.hw_tc_offload	off
+set.offload.esp_hw_offload	on
+set.offload.esp_tx_csum_hw_offload	on
+set.offload.rx_udp_tunnel_port_offload	off [fixed]
+set.offload.tls_hw_tx_offload	off [fixed]
+set.offload.tls_hw_rx_offload	off [fixed]
+set.offload.rx_gro_hw	off [fixed]
+set.offload.tls_hw_record	off [fixed]
+set.offload.rx_gro_list	off
+set.offload.macsec_hw_offload	off [fixed]
+set.offload.rx_udp_gro_forwarding	off
+set.offload.hsr_tag_ins_offload	off [fixed]
+set.offload.hsr_tag_rm_offload	off [fixed]
+set.offload.hsr_fwd_offload	off [fixed]
+set.offload.hsr_dup_offload	off [fixed]
+set.rps.rx-0.cpus	000
+set.rps.rx-0.flow_cnt	0
+set.rfs.sock_flow_entries	0
+set.cpuidle.driver	acpi_idle
+set.cpuidle.governor	menu
+set.cpuidle.state0.name	POLL
+set.cpuidle.state0.disable	0
+set.cpuidle.state1.name	C1
+set.cpuidle.state1.disable	0
+set.cpuidle.state2.name	C2
+set.cpuidle.state2.disable	1
+set.irq	75
+set.irq_eff_affinity	10
+err.cur_khz_at_capture	3200000
+err.rx_crc_errors	0
+err.rx_missed_errors	301689397467
+err.rx_no_buffer_count	0
+err.rx_length_errors	0
+err.rx_over_errors	0
+err.rx_fifo_errors	0
+err.tx_errors	0
+err.rx_pause	na
+err.tx_pause	na
+# after
+set.combined_queues	1
+set.pause	off/off
+set.coalesce_rx_usecs	1
+set.ring_rx	4096
+set.governor	performance
+set.max_khz	3200000
+set.boost	0
+set.smt	off
+set.link	up
+set.bpf_stats	0
+set.nmi_watchdog	0
+set.offload.rx_checksumming	off
+set.offload.tx_checksumming	on
+set.offload.tx_checksum_ipv4	off [fixed]
+set.offload.tx_checksum_ip_generic	off
+set.offload.tx_checksum_ipv6	off [fixed]
+set.offload.tx_checksum_fcoe_crc	on [fixed]
+set.offload.tx_checksum_sctp	off
+set.offload.scatter_gather	off
+set.offload.tx_scatter_gather	off
+set.offload.tx_scatter_gather_fraglist	off [fixed]
+set.offload.tcp_segmentation_offload	off
+set.offload.tx_tcp_segmentation	off
+set.offload.tx_tcp_ecn_segmentation	off [fixed]
+set.offload.tx_tcp_mangleid_segmentation	off
+set.offload.tx_tcp6_segmentation	off
+set.offload.tx_tcp_accecn_segmentation	off [fixed]
+set.offload.generic_segmentation_offload	off
+set.offload.generic_receive_offload	off
+set.offload.large_receive_offload	off
+set.offload.rx_vlan_offload	off
+set.offload.tx_vlan_offload	off
+set.offload.ntuple_filters	off
+set.offload.receive_hashing	on
+set.offload.highdma	on [fixed]
+set.offload.rx_vlan_filter	on
+set.offload.vlan_challenged	off [fixed]
+set.offload.tx_gso_robust	off [fixed]
+set.offload.tx_fcoe_segmentation	on [fixed]
+set.offload.tx_gre_segmentation	on
+set.offload.tx_gre_csum_segmentation	on
+set.offload.tx_ipxip4_segmentation	on
+set.offload.tx_ipxip6_segmentation	on
+set.offload.tx_udp_tnl_segmentation	on
+set.offload.tx_udp_tnl_csum_segmentation	on
+set.offload.tx_gso_partial	on
+set.offload.tx_tunnel_remcsum_segmentation	off [fixed]
+set.offload.tx_sctp_segmentation	off [fixed]
+set.offload.tx_esp_segmentation	on
+set.offload.tx_udp_segmentation	off [requested on]
+set.offload.tx_gso_list	off [fixed]
+set.offload.tx_nocache_copy	off
+set.offload.loopback	off [fixed]
+set.offload.rx_fcs	off [fixed]
+set.offload.rx_all	off
+set.offload.tx_vlan_stag_hw_insert	off [fixed]
+set.offload.rx_vlan_stag_hw_parse	off [fixed]
+set.offload.rx_vlan_stag_filter	off [fixed]
+set.offload.l2_fwd_offload	off
+set.offload.hw_tc_offload	off
+set.offload.esp_hw_offload	on
+set.offload.esp_tx_csum_hw_offload	on
+set.offload.rx_udp_tunnel_port_offload	off [fixed]
+set.offload.tls_hw_tx_offload	off [fixed]
+set.offload.tls_hw_rx_offload	off [fixed]
+set.offload.rx_gro_hw	off [fixed]
+set.offload.tls_hw_record	off [fixed]
+set.offload.rx_gro_list	off
+set.offload.macsec_hw_offload	off [fixed]
+set.offload.rx_udp_gro_forwarding	off
+set.offload.hsr_tag_ins_offload	off [fixed]
+set.offload.hsr_tag_rm_offload	off [fixed]
+set.offload.hsr_fwd_offload	off [fixed]
+set.offload.hsr_dup_offload	off [fixed]
+set.rps.rx-0.cpus	000
+set.rps.rx-0.flow_cnt	0
+set.rfs.sock_flow_entries	0
+set.cpuidle.driver	acpi_idle
+set.cpuidle.governor	menu
+set.cpuidle.state0.name	POLL
+set.cpuidle.state0.disable	0
+set.cpuidle.state1.name	C1
+set.cpuidle.state1.disable	0
+set.cpuidle.state2.name	C2
+set.cpuidle.state2.disable	1
+set.irq	75
+set.irq_eff_affinity	10
+err.cur_khz_at_capture	3200000
+err.rx_crc_errors	0
+err.rx_missed_errors	301930493869
+err.rx_no_buffer_count	0
+err.rx_length_errors	0
+err.rx_over_errors	0
+err.rx_fifo_errors	0
+err.tx_errors	0
+err.rx_pause	na
+err.tx_pause	na
